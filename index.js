@@ -9,8 +9,8 @@ const port = 3000;
 app.use(morgan('dev'));
 app.use('/scripts',express.static(path.resolve(__dirname, 'node_modules')))
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/:songId',express.static(path.join(__dirname, 'public')));
-app.use('/api/song', proxy({
+app.use('/song/:songID',express.static(path.join(__dirname, 'public')));
+app.use('/api/song/:songID/description', proxy({
   target: 'http://localhost:8081'
 }));
 
