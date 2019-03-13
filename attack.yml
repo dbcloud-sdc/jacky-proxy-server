@@ -1,15 +1,13 @@
 config:
   target: 'http://localhost:3000'
-  # processor: "./arsenal.js"
   http:
     pool: 12
   phases:
     - duration: 60
-      arrivalRate: 1000
+      arrivalRate: 1500
 scenarios:
   - flow:
-    # - function: "loadData"
     - get:
-        url: "/5"
+        url: "/{{$randomNumber(1,10000000)}}"
     - get: 
-        url: "/api/song/5"
+        url: "/api/song/{{$randomNumber(1,10000000)}}"
